@@ -1,0 +1,9 @@
+.env
+.conda
+/venv
+/dont_need
+__pycache__
+/temp
+uploads
+uploads_many
+.pytest_cache
