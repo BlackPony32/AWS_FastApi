@@ -90,7 +90,7 @@ async def link_file_and_name(request: DownloadRequest):
         global csv_file_path
         csv_file_path = convert_excel_to_csv(excel_file_path)
 
-        return {"message": "File downloaded and converted successfully", "streamlit_url": "http://51.20.119.227:8501/"}
+        return {"message": "File downloaded and converted successfully", "streamlit_url": "http://13.60.4.147:8501/"}
     except requests.RequestException as e:
         logging.error(f"RequestException: {str(e)}")
         raise HTTPException(status_code=400, detail=f"Error downloading file: {e}")
