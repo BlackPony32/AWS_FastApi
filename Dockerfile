@@ -14,3 +14,5 @@ COPY . .
 
 # Expose the port that the application will run on
 EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
