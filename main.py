@@ -110,10 +110,16 @@ async def link_file_and_name(request: DownloadRequest):
 
 @app.get("/get_file_info/")
 async def get_file_info():
+    global url
+    global file_name
     if url and file_name:
-        return JSONResponse(content={"url": url, "file_name": file_name})
+        response = {"url": url, "file_name": file_name}
+        # Clear the variables
+        url = None
+        file_name = None
+        return response
     else:
-        return JSONResponse(content={"error": "No data available"}, status_code=404)
+        raise HTTPException(status_code=404, detail="No data available")
 
 
 #_____START  BLOCK FOR CHAT TO CSV_____
