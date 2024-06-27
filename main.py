@@ -107,6 +107,7 @@ async def link_file_and_name(request: DownloadRequest):
     file_name = request.filename
     return JSONResponse(content={"url": url, "file_name": file_name})
 
+
 @app.get("/get_file_info/")
 async def get_file_info():
     if url and file_name:
