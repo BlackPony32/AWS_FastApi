@@ -20,7 +20,6 @@ from langchain.agents.agent_types import AgentType
 from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
-node_env = os.getenv('NODE_ENV', 'development')
 
 streamlit_url = os.getenv('STREAMLIT_URL')
 # FastAPI app initialization
