@@ -20,6 +20,9 @@ from langchain.agents.agent_types import AgentType
 from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
+node_env = os.getenv('NODE_ENV', 'development')
+
+streamlit_url = os.getenv('STREAMLIT_URL')
 # FastAPI app initialization
 app = FastAPI()
 # Constants for upload directories
@@ -90,7 +93,7 @@ async def link_file_and_name(request: DownloadRequest):
         global csv_file_path
         csv_file_path = convert_excel_to_csv(excel_file_path)
 
-        return {"message": "File downloaded and converted successfully", "streamlit_url": "https://streamlit-2y3qx63wua-uc.a.run.app/"}
+        return {"message": "File downloaded and converted successfully", "streamlit_url": streamlit_url}
     except requests.RequestException as e:
         logging.error(f"RequestException: {str(e)}")
         raise HTTPException(status_code=400, detail=f"Error downloading file: {e}")
