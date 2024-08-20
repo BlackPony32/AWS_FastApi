@@ -36,6 +36,7 @@ class ChatRequest(BaseModel):
 
 class DownloadRequest(BaseModel):
     url: str
+    user_id: str
     filename: Optional[str] = None
 
 # Utility functions
@@ -105,19 +106,23 @@ async def link_file_and_name(request: DownloadRequest):
 async def link_file_and_name(request: DownloadRequest):
     global url
     global file_name
+    global user_id
     url = request.url
+    user_id = request.user_id
     file_name = request.filename
-    return JSONResponse(content={"url": url, "file_name": file_name})
+    return JSONResponse(content={"url": url, "user_id": user_id, "file_name": file_name})
 
 
 @app.get("/get_file_info/")
 async def get_file_info():
     global url
+    global user_id
     global file_name
-    if url and file_name:
-        response = {"url": url, "file_name": file_name}
+    if url and user_id and file_name:
+        response = {"url": url, "user_id": user_id, "file_name": file_name}
         # Clear the variables
         url = None
+        user_id = None
         file_name = None
         return response
     else:
