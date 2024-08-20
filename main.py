@@ -36,7 +36,7 @@ class ChatRequest(BaseModel):
 
 class DownloadRequest(BaseModel):
     url: str
-    user_id: str
+    user_id: Optional[str] = None
     filename: Optional[str] = None
 
 # Utility functions
